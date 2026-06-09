@@ -1,0 +1,51 @@
+{% extends 'union_app/base.html' %}
+{% block content %}
+<div class="max-w-2xl mx-auto my-12 px-4">
+    <div class="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-xl border border-gray-100 dark:border-gray-700">
+        <div class="flex items-center gap-3 mb-4 text-red-600 dark:text-red-400">
+            <i class="fas fa-shield-heart text-3xl animate-pulse"></i>
+            <h2 class="text-2xl font-bold">Log a Workplace Grievance / Issue</h2>
+        </div>
+        <p class="text-sm text-gray-500 dark:text-gray-400 mb-6">Are you experiencing unfair industrial actions? Report it here. Your details are secured via structural encryption.</p>
+        
+        <form method="POST" class="space-y-4">
+            {% csrf_token %}
+            <div class="grid sm:grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-xs font-bold text-gray-500 mb-1 uppercase">Your Full Name</label>
+                    <input type="text" name="reporter_name" required class="w-full border dark:border-gray-600 p-3 rounded-lg text-sm bg-gray-50 dark:bg-gray-700">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-500 mb-1 uppercase">Active Phone Number</label>
+                    <input type="tel" name="phone_number" required class="w-full border dark:border-gray-600 p-3 rounded-lg text-sm bg-gray-50 dark:bg-gray-700">
+                </div>
+            </div>
+            <div>
+                <label class="block text-xs font-bold text-gray-500 mb-1 uppercase">Employer / Factory Name</label>
+                <input type="text" name="company_name" required class="w-full border dark:border-gray-600 p-3 rounded-lg text-sm bg-gray-50 dark:bg-gray-700">
+            </div>
+            <div class="grid sm:grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-xs font-bold text-gray-500 mb-1 uppercase">Grievance Category</label>
+                    <select name="issue_category" class="w-full border dark:border-gray-600 p-3 rounded-lg text-sm bg-gray-50 dark:bg-gray-700">
+                        <option value="wages">Unpaid Wages / Underpayment</option>
+                        <option value="dismissal">Unfair Dismissal / Termination</option>
+                        <option value="safety">Occupational Safety/Health Hazard</option>
+                        <option value="harassment">Workplace Harassment / Discrimination</option>
+                        <option value="other">Other Labor Grievance</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-500 mb-1 uppercase">Date of Incident (Optional)</label>
+                    <input type="date" name="incident_date" class="w-full border dark:border-gray-600 p-3 rounded-lg text-sm bg-gray-50 dark:bg-gray-700">
+                </div>
+            </div>
+            <div>
+                <label class="block text-xs font-bold text-gray-500 mb-1 uppercase">Provide Full Details</label>
+                <textarea name="details" rows="4" required placeholder="Describe what happened clearly..." class="w-full border dark:border-gray-600 p-3 rounded-lg text-sm bg-gray-50 dark:bg-gray-700"></textarea>
+            </div>
+            <button type="submit" class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-3 rounded-lg transition shadow-md">File Secure Report</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

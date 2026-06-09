@@ -1,0 +1,46 @@
+{% extends 'union_app/base.html' %}
+
+{% block title %}Regional Outposts & Mapping - KUCFAW{% endblock %}
+
+{% block content %}
+<div class="bg-gray-900 text-white py-12 px-4 text-center">
+    <h1 class="text-3xl font-extrabold">Branch Directory & Regional Mapping</h1>
+    <p class="text-gray-400 text-sm mt-2">Find active structural representations closer to your physical workstation.</p>
+</div>
+
+<section class="max-w-7xl mx-auto py-12 px-4 grid lg:grid-cols-5 gap-8">
+    <!-- Branch Administration Details Columns -->
+    <div class="lg:col-span-2 space-y-4">
+        <h3 class="font-bold text-lg mb-2"><i class="fas fa-sitemap mr-2 text-amber-600"></i>Active Outposts</h3>
+        
+        <div class="bg-white dark:bg-gray-800 p-5 rounded-xl border-2 border-amber-500 shadow-sm">
+            <span class="bg-amber-100 text-amber-800 dark:bg-amber-900/40 dark:text-amber-300 text-xs font-bold px-2 py-0.5 rounded">Main National Head Office</span>
+            <h4 class="font-bold text-gray-900 dark:text-white text-base mt-2">Nairobi Central Branch</h4>
+            <p class="text-xs text-gray-500 mt-1"><i class="fas fa-map-marker-alt w-4"></i> Kilome Rd, Nairobi, Kenya</p>
+            <p class="text-xs text-gray-500 mt-1"><i class="fas fa-phone w-4"></i> 0700 050219</p>
+        </div>
+
+        <div class="bg-white dark:bg-gray-800 p-5 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm">
+            <span class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-xs font-bold px-2 py-0.5 rounded">Regional Outpost</span>
+            <h4 class="font-bold text-gray-900 dark:text-white text-base mt-2">Eldoret Regional Branch</h4>
+            <p class="text-xs text-gray-500 mt-1"><i class="fas fa-user-tie w-4"></i> Administered via Director Mr. Momanyi</p>
+        </div>
+    </div>
+
+    <!-- Active High-Performance Interactive Google Map Pin Box -->
+    <div class="lg:col-span-3 flex flex-col min-h-[400px] bg-white dark:bg-gray-800 border dark:border-gray-700 p-3 rounded-2xl shadow-sm">
+        <div class="mb-2 text-xs text-gray-500 dark:text-gray-400">
+            <i class="fas fa-compass text-amber-600 mr-1"></i> Live Geo-Location Pin: Kilome Road Corridor
+        </div>
+        <!-- Fully responsive embedding for direct physical locating -->
+        <iframe 
+            class="w-full flex-grow rounded-xl border dark:border-gray-700 shadow-inner"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.8198762744355!2d36.8222956!3d-1.2818274!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f10d6168e6f15%3A0x6fb2478ba92d3b2c!2sKilome%20Rd%2C%20Nairobi!5e0!3m2!1sen!2ske!4v1710000000000!5m2!1sen!2ske" 
+            style="border:0; min-height: 380px;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+    </div>
+</section>
+{% endblock %}

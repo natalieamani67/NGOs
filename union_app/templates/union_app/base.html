@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" x-data="{ darkMode: localStorage.getItem('theme') === 'dark' }" :class="{ 'dark': darkMode }">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}KUCFAW - Kenya Union of Commercial Food & Allied Workers{% endblock %}</title>
+    <!-- Tailwind CSS Script CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configure Tailwind Dark Mode Variant Configuration -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+        }
+    </script>
+    <!-- FontAwesome for layout design icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Alpine JS for handling animated transitions and localized toggle states -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <style>
+        html { scroll-behavior: smooth; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-100 font-sans flex flex-col min-h-screen transition-colors duration-300">
+
+    <!-- Top Contact Strip -->
+    <div class="bg-amber-600 dark:bg-amber-700 text-white text-sm py-2 px-4 shadow-sm">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+            <div class="flex items-center gap-4">
+                <span><i class="fas fa-map-marker-alt text-amber-200 mr-1"></i> Kilome Rd, Nairobi</span>
+                <span><i class="fas fa-phone text-amber-200 mr-1"></i> 0700 050219</span>
+            </div>
+            <div><span>Open · Closes 5 pm</span></div>
+        </div>
+    </div>
+
+    <!-- Main Navigation Header Bar -->
+    <header class="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 sticky top-0 z-50 shadow-sm transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 h-20 flex justify-between items-center">
+            <a href="{% url 'home' %}" class="flex items-center gap-3">
+                <div class="bg-amber-600 text-white p-2.5 rounded-lg shadow-md">
+                    <i class="fas fa-users-gear text-xl"></i>
+                </div>
+                <div>
+                    <span class="text-xl font-black text-gray-900 dark:text-white block">KUCFAW</span>
+                    <span class="text-xs text-gray-500 dark:text-gray-400 font-medium block -mt-1">Kenya Union of Commercial Food Workers</span>
+                </div>
+            </a>
+
+            <nav class="hidden md:flex items-center gap-6 font-medium">
+    <a href="{% url 'home' %}" class="text-gray-600 dark:text-gray-300 hover:text-amber-600 transition">Home</a>
+    <a href="{% url 'about' %}" class="text-gray-600 dark:text-gray-300 hover:text-amber-600 transition">About</a>
+    <a href="{% url 'branches' %}" class="text-gray-600 dark:text-gray-300 hover:text-amber-600 transition">Branches</a>
+    <a href="{% url 'report_issue' %}" class="text-red-600 dark:text-red-400 hover:underline transition">Report an Issue</a>
+
+    <!-- Dark Mode Button remains here -->
+    <button @click="darkMode = !darkMode; localStorage.setItem('theme', darkMode ? 'dark' : 'light')" class="p-2 rounded-lg bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-amber-400"><i class="fas" :class="darkMode ? 'fa-sun' : 'fa-moon'"></i></button>
+
+    <a href="{% url 'member_signup' %}" class="bg-amber-600 text-white px-4 py-2 rounded-lg hover:bg-amber-700 transition shadow-sm text-sm font-semibold">Member Signup</a>
+</nav>
+        </div>
+    </header>
+
+
+
+    <main class="flex-grow">
+        {% if messages %}
+            <div class="max-w-4xl mx-auto mt-4 px-4">
+                {% for message in messages %}
+                    <div class="p-4 rounded-xl bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400 border border-green-200 dark:border-green-800/50 shadow-sm font-medium text-sm">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Structural App Footer -->
+    <footer class="bg-gray-950 text-gray-500 text-xs py-8 border-t border-gray-900 text-center">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <p>&copy; 2026 Kenya Union of Commercial Food & Allied Workers. Built for Industrial Security.</p>
+            <div class="flex gap-4">
+                <a href="{% url 'home' %}" class="hover:text-white transition">Home</a>
+                <a href="{% url 'about' %}" class="hover:text-white transition">About Dashboard</a>
+                <a href="{% url 'branches' %}" class="hover:text-white transition">Maps Network</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

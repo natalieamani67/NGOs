@@ -1,0 +1,62 @@
+{% extends 'union_app/base.html' %}
+{% block content %}
+<div class="max-w-2xl mx-auto my-12 px-4">
+    <div class="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-xl border border-gray-100 dark:border-gray-700">
+        <div class="flex items-center gap-3 mb-4 text-amber-600 dark:text-amber-400">
+            <i class="fas fa-id-card text-3xl"></i>
+            <h2 class="text-2xl font-bold">New Employee Union Registration</h2>
+        </div>
+        <p class="text-sm text-gray-500 dark:text-gray-400 mb-6">Register your official working profile credentials into the union network repository below.</p>
+        
+        <form method="POST" class="space-y-4">
+            {% csrf_token %}
+            <div class="grid sm:grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-xs font-bold text-gray-500 mb-1 uppercase">Full Name</label>
+                    <input type="text" name="full_name" required class="w-full border dark:border-gray-600 p-3 rounded-lg text-sm bg-gray-50 dark:bg-gray-700">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-500 mb-1 uppercase">National ID / Passport</label>
+                    <input type="text" name="national_id" required class="w-full border dark:border-gray-600 p-3 rounded-lg text-sm bg-gray-50 dark:bg-gray-700">
+                </div>
+            </div>
+            <div class="grid sm:grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-xs font-bold text-gray-500 mb-1 uppercase">Mobile Number</label>
+                    <input type="tel" name="phone_number" required class="w-full border dark:border-gray-600 p-3 rounded-lg text-sm bg-gray-50 dark:bg-gray-700">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-500 mb-1 uppercase">Email Address</label>
+                    <input type="email" name="email" required class="w-full border dark:border-gray-600 p-3 rounded-lg text-sm bg-gray-50 dark:bg-gray-700">
+                </div>
+            </div>
+            <div class="grid sm:grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-xs font-bold text-gray-500 mb-1 uppercase">Current Employer Factory</label>
+                    <input type="text" name="current_workplace" required class="w-full border dark:border-gray-600 p-3 rounded-lg text-sm bg-gray-50 dark:bg-gray-700">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-500 mb-1 uppercase">Job Title</label>
+                    <input type="text" name="job_title" required placeholder="e.g. Machine Operator" class="w-full border dark:border-gray-600 p-3 rounded-lg text-sm bg-gray-50 dark:bg-gray-700">
+                </div>
+            </div>
+            <div class="grid sm:grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-xs font-bold text-gray-500 mb-1 uppercase">Employment Start Date</label>
+                    <input type="date" name="date_employed" required class="w-full border dark:border-gray-600 p-3 rounded-lg text-sm bg-gray-50 dark:bg-gray-700">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-500 mb-1 uppercase">Local Liaison Branch</label>
+                    <select name="assigned_branch" class="w-full border dark:border-gray-600 p-3 rounded-lg text-sm bg-gray-50 dark:bg-gray-700">
+                        <option value="Nairobi HQ">Nairobi Headquarters (Kilome Rd)</option>
+                        <option value="Eldoret">Eldoret Branch</option>
+                        <option value="Mombasa">Mombasa Branch</option>
+                        <option value="Kisumu">Kisumu Branch</option>
+                    </select>
+                </div>
+            </div>
+            <button type="submit" class="w-full bg-amber-600 hover:bg-amber-700 text-white font-bold py-3 rounded-lg transition shadow">Save Member Credentials</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
