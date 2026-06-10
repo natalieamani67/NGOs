@@ -55,7 +55,8 @@
     <!-- Dark Mode Button remains here -->
     <button @click="darkMode = !darkMode; localStorage.setItem('theme', darkMode ? 'dark' : 'light')" class="p-2 rounded-lg bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-amber-400"><i class="fas" :class="darkMode ? 'fa-sun' : 'fa-moon'"></i></button>
 
-    <a href="{% url 'member_signup' %}" class="bg-amber-600 text-white px-4 py-2 rounded-lg hover:bg-amber-700 transition shadow-sm text-sm font-semibold">Member Signup</a>
+    <a href="{% url 'member_signup' %}" class="bg-amber-600 text-white px-
+    4 py-2 rounded-lg hover:bg-amber-700 transition shadow-sm text-sm font-semibold">Member Signup</a>
 </nav>
         </div>
     </header>
